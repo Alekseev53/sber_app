@@ -80,6 +80,7 @@ class App extends Component {
   }
 
   dispatchAssistantAction (action) {
+    debugger
     console.log('dispatchAssistantAction', action);
     if (action) {
     console.log('dispatchAssistantAction', action);
