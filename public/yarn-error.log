@@ -1,0 +1,71 @@
+Arguments: 
+  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js install
+
+PATH: 
+  C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files\TortoiseSVN\bin;C:\Program Files\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\CMake\bin;C:\Program Files\Git\cmd;C:\Program Files\gnuplot\bin;C;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Users\79196\AppData\Roaming\nvm;C:\Program Files\nodejs\node_modules\npm\bin;C:\Program Files\nodejs\;C:\Program Files (x86)\Yarn\bin\;C:\Users\79196\AppData\Local\Programs\Python\Python311\Scripts\;C:\Users\79196\AppData\Local\Programs\Python\Python311\;C:\Users\79196\AppData\Local\Microsoft\WindowsApps;C:\Users\79196\AppData\Local\GitHubDesktop\bin;C:\Users\79196\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\79196\AppData\Roaming\npm;C:\Users\79196\AppData\Local\Yarn\bin
+
+Yarn version: 
+  1.22.19
+
+Node version: 
+  18.16.0
+
+Platform: 
+  win32 x64
+
+Trace: 
+  Error: getaddrinfo ENOTFOUND registry.yarnpkg.com
+      at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:107:26)
+
+npm manifest: 
+  {
+    "name": "salute-demo-app",
+    "version": "0.1.0",
+    "private": true,
+    "dependencies": {
+      "@salutejs/client": "^1.16.2",
+      "@testing-library/jest-dom": "^5.16.5",
+      "@testing-library/react": "^14.0.0",
+      "@testing-library/user-event": "^14.4.3",
+      "@types/jest": "^29.5.1",
+      "@types/node": "^18.16.3",
+      "@types/react": "^18.2.0",
+      "@types/react-dom": "^18.2.1",
+      "react": "^18.2.0",
+      "react-dom": "^18.2.0",
+      "react-scripts": "5.0.1",
+      "styled-components": "^5.3.10",
+      "typescript": "=5.0.4",
+      "web-vitals": "^3.3.1"
+    },
+    "scripts": {
+      "start": "react-scripts start",
+      "build": "react-scripts build",
+      "test": "react-scripts test",
+      "eject": "react-scripts eject"
+    },
+    "eslintConfig": {
+      "extends": [
+        "react-app",
+        "react-app/jest"
+      ]
+    },
+    "browserslist": {
+      "production": [
+        ">0.2%",
+        "not dead",
+        "not op_mini all"
+      ],
+      "development": [
+        "last 1 chrome version",
+        "last 1 firefox version",
+        "last 1 safari version"
+      ]
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
