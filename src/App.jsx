@@ -274,7 +274,7 @@ class App extends Component {
     console.log(anyText.note);
     // You might want to do validation of anyText before setting it as a value
     document.getElementById("answer").value = anyText.note;
-    this._send_action_value('done', anyText.note);
+    this._send_action_value('done', {'note':anyText.note,'true_value':eval(this.state.expression)} );
     this.submitAnswer();
   };
   
