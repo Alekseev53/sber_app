@@ -46,8 +46,10 @@ class App extends Component {
 
     this.assistant = initializeAssistant(() => this.getStateForAssistant() );
     this.assistant.on("data", (event/*: any*/) => {
+      //debugger;
       console.log(`assistant.on(data)`, event);
       const { action } = event
+      console.log('acton cur = ',action);
       this.dispatchAssistantAction(action);
     });
     this.assistant.on("start", (event) => {
@@ -80,22 +82,31 @@ class App extends Component {
   dispatchAssistantAction (action) {
     console.log('dispatchAssistantAction', action);
     if (action) {
+    console.log('dispatchAssistantAction', action);
      switch (action.type) {
       case "start_game":
         this.startGame(); 
+        break;
       case "settings":
-        this.openSettings(); break;
+        this.openSettings(); 
+        break;
       case "пример":
-        this.startGame(); break;
+        this.startGame(); 
+        break;
       case "save":
-        this.saveSettings(); break;
+        this.saveSettings(); 
+        break;
       case "rules":
-        this.openRules(); break;
+        this.openRules();
+         break;
       case "complex":
         break;
       case "max_number":
         break;
-        }
+      case "add_note":
+        this.giveAnswer(action);
+        
+      }
       } 
   }
 
@@ -130,6 +141,8 @@ class App extends Component {
       expression: this.generateExpression(),
     });
   };
+
+  
 
   submitAnswer = () => {
     const userAnswer = document.getElementById("answer").value;
@@ -229,6 +242,39 @@ class App extends Component {
     }
   };
 
+  _send_action_value(action_id, value) {
+    const data = {
+      action: {
+        action_id: action_id,
+        parameters: {   // значение поля parameters может любым, но должно соответствовать серверной логике
+          value: value, // см.файл src/sc/noteDone.sc смартаппа в Studio Code
+        }
+      }
+    };
+    const unsubscribe = this.assistant.sendData(
+      data,
+      (data) => {   // функция, вызываемая, если на sendData() был отправлен ответ
+        const {type, payload} = data;
+        console.log('sendData onData:', type, payload);
+        unsubscribe();
+      });
+    }
+
+  giveAnswer = (anyText) => {
+    debugger;
+    console.log(anyText.note);
+    // You might want to do validation of anyText before setting it as a value
+    document.getElementById("answer").value = anyText.note;
+    this._send_action_value('done', anyText.note);
+    this.submitAnswer();
+  };
+  
+  handleSubmit = (event) => {
+    event.preventDefault();  // Prevents the page from refreshing
+    this.submitAnswer();
+  }
+  
+
 
   render() {
     const {
@@ -270,16 +316,18 @@ class App extends Component {
               {expression && expression.substring(1, expression.length - 1)}
             </span>
           </div>
+          <form onSubmit={this.handleSubmit}>
+            <input type="number" id="answer" placeholder="Enter your answer" className="larger-input" />
+            <div className="game-buttons">
+              <button id="submit-btn" type="submit">
+                Submit
+              </button>
+              <button id="settings-btn" type="button" onClick={this.openSettings}>
+                Settings
+              </button>
+            </div>
+          </form>
 
-          <input type="number" id="answer" placeholder="Enter your answer" className="larger-input" />
-          <div className="game-buttons">
-            <button id="submit-btn" onClick={this.submitAnswer}>
-              Submit
-            </button>
-            <button id="settings-btn" onClick={this.openSettings}>
-              Settings
-            </button>
-          </div>
           <p
           id="result-message"
           style={{ fontSize: "18px", fontWeight: "bold" }}
