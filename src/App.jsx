@@ -100,12 +100,20 @@ class App extends Component {
         this.openRules();
          break;
       case "complex":
+        if (action.note) {
+          const newComplex = parseInt(action.note);
+          document.getElementById("depth").value =  parseInt(newComplex);
+        }
         break;
       case "max_number":
+        if (action.note) {
+          debugger;
+          const newMaxNumber = parseInt(action.note);
+          document.getElementById("max-number").value =  parseInt(newMaxNumber);
+        }
         break;
       case "add_note":
         this.giveAnswer(action);
-        
       }
       } 
   }
@@ -261,7 +269,7 @@ class App extends Component {
     }
 
   giveAnswer = (anyText) => {
-    debugger;
+    //debugger;
     console.log(anyText.note);
     // You might want to do validation of anyText before setting it as a value
     document.getElementById("answer").value = anyText.note;
