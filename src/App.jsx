@@ -119,23 +119,23 @@ class App extends Component {
       } 
   }
 
-  _send_answer(value) {
-    const data = {
-      action: {
-        parameters: {   // значение поля parameters может любым, но должно соответствовать серверной логике
-          value: value, // см.файл src/sc/noteDone.sc смартаппа в Studio Code
-        }
-      }
-    };
+  // _send_answer(value) {
+  //   const data = {
+  //     action: {
+  //       parameters: {   // значение поля parameters может любым, но должно соответствовать серверной логике
+  //         value: value, // см.файл src/sc/noteDone.sc смартаппа в Studio Code
+  //       }
+  //     }
+  //   };
     
-    const unsubscribe = this.assistant.sendData(
-      data,
-      (data) => {   // функция, вызываемая, если на sendData() был отправлен ответ
-        const {type, payload} = data;
-        console.log('sendData onData:', type, payload);
-        unsubscribe();
-      });
-  }
+  //   const unsubscribe = this.assistant.sendData(
+  //     data,
+  //     (data) => {   // функция, вызываемая, если на sendData() был отправлен ответ
+  //       const {type, payload} = data;
+  //       console.log('sendData onData:', type, payload);
+  //       unsubscribe();
+  //     });
+  // }
 
   openRules = () => {
     this.setState({ modalDisplay: "block" });
@@ -157,7 +157,7 @@ class App extends Component {
     const userAnswer = document.getElementById("answer").value;
     const operator = document.getElementById("expression").textContent;
     const correctAnswer = eval(operator);
-    this._send_answer(correctAnswer);
+    //this._send_answer(correctAnswer);
     if (userAnswer == correctAnswer) {
       this.setState({
         resultMessage: { text: "Correct!", className: "correct" },
@@ -271,10 +271,14 @@ class App extends Component {
 
   giveAnswer = (anyText) => {
     //debugger;
-    console.log(anyText.note);
+    console.log('anyText.note:', anyText.note);
+    console.log('this.state.expression:', this.state.expression);
     // You might want to do validation of anyText before setting it as a value
     document.getElementById("answer").value = anyText.note;
-    this._send_action_value('done', {'note':anyText.note,'true_value':eval(this.state.expression)} );
+    this._send_action_value('done', {
+      'note':anyText.note,
+      'true_value':eval(this.state.expression)
+    });
     this.submitAnswer();
   };
   
