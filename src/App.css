@@ -14,7 +14,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #008f4f; /* Green */
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -22,10 +22,11 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  text-align: center;
 }
 
 .App-link {
-  color: #61dafb;
+  color: #0073cc; /* Blue */
 }
 
 @keyframes App-logo-spin {
@@ -38,11 +39,11 @@
 }
 
 .correct {
-  color: green;
+  color: #008f4f; /* Green */
 }
 
 .incorrect {
-  color: red;
+  color: #ff0000; /* Red */
 }
 
 body {
@@ -62,22 +63,24 @@ body {
   padding: 20px;
   background-color: #ffffff;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px; /* Increase or decrease the value to adjust the roundness */
 }
 
 
 button {
   display: inline-block;
   padding: 10px 20px;
-  background-color: #0077CC;
+  background-color: #008f4f; /* Green */
   color: #ffffff;
   font-size: 16px;
   border: none;
   border-radius: 3px;
   cursor: pointer;
+  border-radius: 5px; /* Increase or decrease the value to adjust the roundness */
 }
 
 button:hover {
-  background-color: #005599;
+  background-color: #006431; /* Darker green */
 }
 
 .game-buttons {
@@ -97,14 +100,12 @@ button:hover {
   font-weight: bold; /* You can make the text bolder */
 }
 
-
 .larger-input {
   font-size: 18px;
   width: 100%;
   padding: 5px;
   margin-bottom: 10px;
 }
-
 
 .modal {
   display: none;
@@ -124,6 +125,7 @@ button:hover {
   padding: 20px;
   border: 1px solid #888;
   width: 80%;
+  border-radius: 10px; /* Increase or decrease the value to adjust the roundness */
 }
 
 .close {
@@ -140,10 +142,60 @@ button:hover {
   cursor: pointer;
 }
 
-
 @media screen and (max-width: 550px) {
   .rules-modal .modal-content {
     max-width: 90%; /* Adjust the max-width percentage as needed */
     margin-top: 10%;
   }
+}
+
+.settings {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.setting-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.setting-label {
+  width: 150px; /* Increase or decrease the value to adjust the width */
+  margin-right: 10px;
+}
+
+.setting-input {
+  width: 60px; /* Increase or decrease the value to adjust the width */
+}
+
+.save-button {
+  padding: 8px 16px;
+  background-color: #008f4f; /* Green */
+  color: #ffffff;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.settings-table {
+  margin-top: 20px;
+}
+
+.settings-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.settings-table th,
+.settings-table td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.settings-table th {
+  background-color: #f2f2f2;
+  font-weight: bold;
 }
